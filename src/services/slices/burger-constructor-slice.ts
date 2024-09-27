@@ -29,7 +29,7 @@ export type TBurgerConstructorState = {
 export const constructorSlice = createSlice({
   name: 'burgerConstructor',
   initialState: {
-    isLoading: false,
+    isLoading: true,
     burgerConstructorItems: {
       bun: null,
       ingredients: []
