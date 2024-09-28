@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from '../../services/store';
 import { registerUser } from '../../services/slices/userSlice';
 
 export const Register: FC = () => {
-  const [userName, setUserName] = useState('');
+  const [name, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -15,14 +15,14 @@ export const Register: FC = () => {
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    dispatch(registerUser({ email, password, name: userName }));
+    dispatch(registerUser({ email, name, password }));
   };
 
   return (
     <RegisterUI
       errorText={error?.toString()}
       email={email}
-      userName={userName}
+      userName={name}
       password={password}
       setEmail={setEmail}
       setPassword={setPassword}

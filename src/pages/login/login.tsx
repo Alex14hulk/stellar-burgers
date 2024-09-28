@@ -8,8 +8,6 @@ export const Login: FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const navigate = useNavigate();
-  const error = useSelector((state) => state.user.error);
   const dispatch = useDispatch();
 
   const handleSubmit = async (e: SyntheticEvent) => {
@@ -19,7 +17,7 @@ export const Login: FC = () => {
 
   return (
     <LoginUI
-      errorText={error?.toString()}
+      errorText=''
       email={email}
       setEmail={setEmail}
       password={password}

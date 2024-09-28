@@ -44,7 +44,7 @@ const App = () => {
         <Route
           path='/login'
           element={
-            <ProtectedRoute publicRoute>
+            <ProtectedRoute onlyUnAuth>
               <Login />
             </ProtectedRoute>
           }
@@ -76,7 +76,7 @@ const App = () => {
         <Route
           path='/profile'
           element={
-            <ProtectedRoute publicRoute>
+            <ProtectedRoute>
               <Profile />
             </ProtectedRoute>
           }
