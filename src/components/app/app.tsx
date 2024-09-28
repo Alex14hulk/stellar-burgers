@@ -17,7 +17,7 @@ import { ProtectedRoute } from '../protected-route/protected-route';
 import { useEffect } from 'react';
 import { useDispatch } from '../../services/store';
 import { fetchIngredients } from '../../services/slices/ingredientsSlice';
-import { checkIsUserLogged } from '../../services/slices/userSlice';
+import { checkUserAuth } from '../../services/slices/userSlice';
 
 const App = () => {
   const location = useLocation();
@@ -28,7 +28,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(fetchIngredients());
-    dispatch(checkIsUserLogged());
+    dispatch(checkUserAuth());
   }, [dispatch]);
 
   const closeModal = () => {

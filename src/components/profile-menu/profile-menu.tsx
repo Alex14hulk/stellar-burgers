@@ -5,8 +5,8 @@ import { useDispatch } from '../../services/store';
 import { logoutUser } from '../../services/slices/userSlice';
 
 export const ProfileMenu: FC = () => {
-  const dispatch = useDispatch();
   const { pathname } = useLocation();
+  const dispatch = useDispatch();
 
   const handleLogout = () => {
     dispatch(logoutUser());

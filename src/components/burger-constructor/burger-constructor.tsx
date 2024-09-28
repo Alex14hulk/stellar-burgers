@@ -1,7 +1,7 @@
 import { FC, useMemo } from 'react';
 import { TConstructorIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
-import { useSelector, useDispatch } from '../../services/store';
+import { RootState, useSelector, useDispatch } from '../../services/store';
 import {
   resetModal,
   saveBurger
@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 export const BurgerConstructor: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const isAuth = useSelector((state) => state.user.isLoggedIn);
+  const isAuth = useSelector((state: RootState) => state.user);
   /** TODO: взять переменные constructorItems, orderRequest и orderModalData из стора */
   const constructorItems = useSelector(
     (state) => state.burgerConstructor.burgerConstructorItems

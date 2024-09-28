@@ -14,11 +14,13 @@ export const ProtectedRoute = ({
   publicRoute,
   children
 }: ProtectedRouteProps) => {
-  const { isLoggedIn, userInfo } = useSelector((state: RootState) => state.user);
+  const { isAuthChecked, userInfo } = useSelector(
+    (state: RootState) => state.user
+  );
   const location = useLocation();
   const dispatch = useDispatch();
 
-  if (!isLoggedIn) {
+  if (!isAuthChecked) {
     return <Preloader />;
   }
 
@@ -39,24 +41,3 @@ export const ProtectedRoute = ({
 
   return children;
 };
-
-
-/*
-export const ProtectedRoute = ({
-  publicRoute,
-  children
-}: ProtectedRouteProps) => {
-  const location = useLocation();
-  const isUserLoggedIn = useSelector((state) => state.user.isLoggedIn);
-
-  if (publicRoute && isUserLoggedIn) {
-    const redirectTo = location.state?.from || { pathname: '/' };
-    return <Navigate replace to={redirectTo} />;
-  }
-
-  if (!isUserLoggedIn) {
-    return <Navigate replace to='/login' state={{ from: location }} />;
-  }
-
-  return children;
-}; */
