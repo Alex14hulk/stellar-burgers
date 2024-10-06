@@ -1,6 +1,7 @@
 import { TIngredient } from '../../utils/types';
 import reducer, { TIngredientsState, fetchIngredients } from '../slices/ingredientsSlice';
 
+
 describe('ingredients reducer', () => {
   const initialState: TIngredientsState = {
     ingredients: [],
@@ -41,6 +42,6 @@ describe('ingredients reducer', () => {
     const action = fetchIngredients.rejected(new Error(), '', undefined, error);
     const state = reducer(initialState, action);
     expect(state.error).toBe(error);
-    expect(state.isLoading).toBe(false);
+    expect(state.isLoading).toBe(false); 
   });
 });
