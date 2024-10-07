@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TIngredient } from '@utils-types';
 import { getIngredientsApi } from '../../utils/burger-api';
 
@@ -22,23 +22,29 @@ export const initialState: TIngredientsState = {
   error: null
 };
 
-const ingredientsSlice = createSlice({
+export const ingredientsSlice = createSlice({
   name: 'ingredients',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchIngredients.pending, (state) => {
-        state.error = null;
         state.isLoading = true;
+        state.error = null;
       })
-      .addCase(fetchIngredients.fulfilled, (state, action) => {
-        state.ingredients = action.payload;
-        state.isLoading = false;
-      })
+      .addCase(
+        fetchIngredients.fulfilled,
+        (state, action: PayloadAction<TIngredient[]>) => {
+          state.ingredients = action.payload;
+          state.isLoading = false;
+        }
+      )
       .addCase(fetchIngredients.rejected, (state, action) => {
-        state.error = action.error as string;
         state.isLoading = false;
+        state.error =
+          action.payload && typeof action.payload.toString === 'function'
+            ? action.payload.toString()
+            : 'Неизвестная ошибка';
       });
   }
 });

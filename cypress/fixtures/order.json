@@ -1,0 +1,11 @@
+{
+    "success": true,
+    "order": [
+      {
+        "ingredients": ["643d69a5c3f7b9001cfa093c", "643d69a5c3f7b9001cfa093e"],
+        "status": "done",
+        "name": "Краторный люминесцентный бургер",
+        "number": 54937
+      }
+    ]
+  }
