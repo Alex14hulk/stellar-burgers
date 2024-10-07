@@ -36,14 +36,15 @@ export const ingredientsSlice = createSlice({
         fetchIngredients.fulfilled,
         (state, action: PayloadAction<TIngredient[]>) => {
           state.ingredients = action.payload;
-          state.isLoading = false; 
+          state.isLoading = false;
         }
       )
       .addCase(fetchIngredients.rejected, (state, action) => {
-        state.isLoading = false; 
-        state.error = (action.payload && typeof action.payload.toString === 'function') 
-        ? action.payload.toString() 
-        : 'Неизвестная ошибка';
+        state.isLoading = false;
+        state.error =
+          action.payload && typeof action.payload.toString === 'function'
+            ? action.payload.toString()
+            : 'Неизвестная ошибка';
       });
   }
 });

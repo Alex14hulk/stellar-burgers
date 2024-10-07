@@ -1,9 +1,6 @@
+import { bunSelector, modal, modal_close, testUrl } from "./constants";
+
 describe('Открытие/закрытие модальных окон', () => {
-  const bunSelector = "Мясо бессмертных моллюсков Protostomia";
-  const testUrl = 'http://localhost:4000';
-  const modal = '[data-test-id="modal"]';
-
-
   beforeEach(() => {
     cy.intercept('GET', 'api/ingredients', { fixture: 'ingredients.json' });
     cy.visit(testUrl);
@@ -13,7 +10,7 @@ describe('Открытие/закрытие модальных окон', () => 
     cy.get(modal).should('not.exist');
     cy.contains(bunSelector).click({ force: true });
     cy.get(modal).should('exist');
-    cy.get('[data-test-id="modal-close"]').click({ force: true });
+    cy.get(modal_close).click({ force: true });
     cy.get(modal).should('not.exist');
   });
 

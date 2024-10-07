@@ -6,4 +6,4 @@ describe('Тест store', () => {
     const rootReducerTest = rootReducer(undefined, { type: 'action' });
     expect(rootReducerTest).toEqual(store.getState());
   });
-}); 
+});
